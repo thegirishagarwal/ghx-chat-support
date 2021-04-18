@@ -1,0 +1,21 @@
+<div class="closePopup">
+    <a href="javascript:;" #closeChatBox>
+        <span class="fa fa-times"></span>
+    </a>
+</div>
+<ng-container *ngIf="isShowHeader">
+    <div class="chatHeader" [style.backgroundColor]="themeColor" [ngClass]="{'chatHeader-whatsapp': (chatBoxType === 'whatsapp')}">
+        <h2 class="chatHeading">{{chatHeading}}</h2>
+        <p class="chatTagline">{{chatTagline}}</p>
+    </div>
+</ng-container>
+
+<div class="chatBody">
+    <div class="inner-chatBody">
+        <ng-container *ngIf="chatList">
+            <ng-container *ngFor="let chatData of chatList">
+                <chat-box-list [chatData]="chatData" [themeColor]="themeColor" (callChatSupport)="onChatSupport(chatBoxType, $event)"></chat-box-list>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+$themeColor: #000000;
+
+#chatSupport{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+
+::ng-deep #chatSupport{
+    font-family: 'Open sans';
+}
+
+.chatIcon{
+    display: flex;
+    border-radius: 50%;
+    color: #ffffff;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 0 0 0.5em rgba($color: #42b1a7, $alpha: 0);
+    animation: iconAnimate 1s infinite;
+    &.defaultIcon{
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        background-color: #26c281;
+    }
+    &:before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: scale(0);
+        border-radius: 50%;
+        background-color: rgba($color: #000000, $alpha: 0.2);
+        z-index: -1;
+    }
+}
+
+
+@keyframes iconAnimate {
+    0% {box-shadow: 0 0 0 0 rgba($color: $themeColor, $alpha: 1);}
+}
+
+
+.chatBox{
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    width: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    transform: translateX(100px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    &.showChatBox{
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.chatIconMenu{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+    right: calc(100% + 20px);
+    top: 0;
+    width: max-content;
+    height: 100%;
+}

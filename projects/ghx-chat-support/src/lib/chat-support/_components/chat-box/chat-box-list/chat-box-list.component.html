@@ -1,0 +1,12 @@
+<div class="chat-list" [ngClass]="isUserAvailable ? 'activeStatus' : 'notAvailable'" #chatList>
+    <div class="chatUserImg">
+        <img src="{{chatData['userImg']}}" alt="User Image" class="img-fluid">
+    </div>
+    <div class="chatUserContent">
+        <h2 class="userName">{{chatData['userName']}}</h2>
+        <p class="userDesignation">{{chatData['userDesignation']}}</p>
+        <p class="userStatus">
+          {{isUserAvailable ? 'Available Now' : offlineMsg}}
+        </p>
+    </div>
+</div>
