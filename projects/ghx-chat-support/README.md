@@ -2,7 +2,7 @@
 
 <!-- <a href="https://badge.fury.io/js/ghx-chat-support"><img src="https://badge.fury.io/js/ghx-chat-support.svg" align="right" alt="npm version" height="18"></a> -->
 
-This is an Angular wrapper library for the [Ghx Chat Support](https://thegirishagarwal.github.io/ghx-chat-support/). To use this library you should get familiar with the Perfect Scrollbar documentation as well since this documentation only explains details specific to this wrapper.
+This is an Angular wrapper library for the [Ghx Chat Support](https://thegirishagarwal.github.io/ghx-chat-support/). To use this library you should get familiar with the Ghx Chat Support documentation as well since this documentation only explains details specific to this wrapper.
 
 This documentation is for the latest 5/6.x.x version which requires Angular 5 or newer. For Angular 4 you need to use the latest 4.x.x version. Documentation for the 1.x.x can be found from <a href="https://github.com/thegirishagarwal/ghx-chat-support/">here</a>.
 
@@ -85,4 +85,4 @@ contactName             // This is contact name of your team member.
 userAvailability        // This is time of your team member avaibility. If you don't use this option that your team member will be always offline.
 ```
 
-For more detailed documentation with all the supported events / options see the the Perfect Scrollbar documentation.
+For more detailed documentation with all the supported events / options see the the Ghx Chat Support documentation.
