@@ -1,4 +1,4 @@
-export interface Chats {
+export interface GhxChats {
     userImg: string;
     userName: string;
     userDesignation: string;

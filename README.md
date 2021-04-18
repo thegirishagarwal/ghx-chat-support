@@ -1,27 +1,88 @@
-# NgxChatSupport
+# GHX CHAT SUPPORT
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
+<!-- <a href="https://badge.fury.io/js/ghx-chat-support"><img src="https://badge.fury.io/js/ghx-chat-support.svg" align="right" alt="npm version" height="18"></a> -->
 
-## Development server
+This is an Angular wrapper library for the [Ghx Chat Support](https://thegirishagarwal.github.io/ghx-chat-support/). To use this library you should get familiar with the Perfect Scrollbar documentation as well since this documentation only explains details specific to this wrapper.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This documentation is for the latest 5/6.x.x version which requires Angular 5 or newer. For Angular 4 you need to use the latest 4.x.x version. Documentation for the 1.x.x can be found from <a href="https://github.com/thegirishagarwal/ghx-chat-support/">here</a>.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Quick links
 
-## Build
+[Example application](https://thegirishagarwal.github.io/ghx-chat-support/)
+ |
+[StackBlitz example](https://stackblitz.com/github/thegirishagarwal/ghx-chat-support/tree/master)
+ |
+[Ghx Chat Support documentation](https://github.com/thegirishagarwal/ghx-chat-support/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Building the library
 
-## Running unit tests
+```bash
+npm install
+npm run build
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Running the example
 
-## Running end-to-end tests
+```bash
+npm install
+npm run start
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Installing and usage
 
-## Further help
+```bash
+npm install ghx-chat-support --save
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+##### Load the module for your app (with global configuration):
+
+Providing the global configuration is optional and when used you should only provide the configuration in your root module.
+
+```javascript
+import { GhxChatSupportModule } from 'ghx-chat-support';
+
+
+@NgModule({
+  ...
+  imports: [
+    ...
+    GhxChatSupportModule
+  ],
+})
+```
+
+##### Use it in your HTML template (with custom configuration):
+
+This library provides two ways to create a Ghx Chat Support for your project, a component. Component tries to make the usage as simple as possible.
+
+**COMPONENT USAGE**
+
+Simply replace the element that would ordinarily be passed to `PerfectScrollbar` with the perfect-scollbar component.
+
+```html
+<ghx-chat-support
+    [chatBoxType]="'skype'"
+    [chatList]="chatBoxListData"
+>
+</ghx-chat-support>
+```
+
+```javascript
+[chatBoxType]           // Whatever you want the type of chat box (Skype, Messenger, Telegram, Whatsapp) (Default: Skype).
+[chatList]              // List of active team member who available for interact with user
+```
+
+##### Available configuration in chatList option:
+
+```javascript
+userImg                 // Image of your team member who visible to user.
+userName                // Name of the team member.
+userDesignation         // Designation of team member
+contactName             // This is contact name of your team member.
+                        // Whatsapp: Your mobile number
+                        // Telegram/Messenger/Skype: Your userName
+userAvailability        // This is time of your team member avaibility. If you don't use this option that your team member will be always offline.
+```
+
+For more detailed documentation with all the supported events / options see the the Perfect Scrollbar documentation.

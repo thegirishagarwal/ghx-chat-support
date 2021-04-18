@@ -10,18 +10,18 @@ import {
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 
-import { ChatBoxType, Chats } from './_common/interfaces';
+import { ChatBoxType, GhxChats } from './_common/interfaces';
 import { ChatBoxDirective } from './_common/directives/chat-box.directive';
 import { ChatBoxComponent } from './_components/chat-box/chat-box.component';
 import { CommonService } from './_common/services/common.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
-  selector: 'chat-support',
+  selector: 'ghx-chat-support',
   templateUrl: './chat-support.component.html',
   styleUrls: ['./chat-support.component.scss'],
 })
-export class ChatSupportComponent implements OnInit, AfterViewInit {
+export class GhxChatSupportComponent implements OnInit, AfterViewInit {
 
   public showChatBox = false;
   @Input() isShowChatBox = false;
@@ -29,7 +29,7 @@ export class ChatSupportComponent implements OnInit, AfterViewInit {
   @Input() chatTagline = 'Click one of our representatives below';
   @Input() chatBoxType: ChatBoxType = 'skype';
   @Input() iconName: string;
-  @Input() chatList: Chats[];
+  @Input() chatList: GhxChats[];
 
   themeColor: string;
   chatQuantity: 'single' | 'multiple' = 'single';

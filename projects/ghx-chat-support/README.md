@@ -1,22 +1,19 @@
 # GHX CHAT SUPPORT
 
-<a href="https://badge.fury.io/js/ngx-perfect-scrollbar"><img src="https://badge.fury.io/js/ngx-perfect-scrollbar.svg" align="right" alt="npm version" height="18"></a>
+<!-- <a href="https://badge.fury.io/js/ghx-chat-support"><img src="https://badge.fury.io/js/ghx-chat-support.svg" align="right" alt="npm version" height="18"></a> -->
 
-This is an Angular wrapper library for the [Perfect Scrollbar](https://utatti.github.io/perfect-scrollbar/). To use this library you should get familiar with the Perfect Scrollbar documentation as well since this documentation only explains details specific to this wrapper.
+This is an Angular wrapper library for the [Ghx Chat Support](https://thegirishagarwal.github.io/ghx-chat-support/). To use this library you should get familiar with the Perfect Scrollbar documentation as well since this documentation only explains details specific to this wrapper.
 
-This documentation is for the latest 5/6.x.x version which requires Angular 5 or newer. For Angular 4 you need to use the latest 4.x.x version. Documentation for the 4.x.x can be found from <a href="https://github.com/zefoy/ngx-perfect-scrollbar/tree/4.x.x/">here</a>.
+This documentation is for the latest 5/6.x.x version which requires Angular 5 or newer. For Angular 4 you need to use the latest 4.x.x version. Documentation for the 1.x.x can be found from <a href="https://github.com/thegirishagarwal/ghx-chat-support/">here</a>.
 
-### EOL Notice
-
-Version 10.0.0 will most likely be the last release of this library. I recommend you to switch to using native Angular scrollbar libraries such as ngx-scrollbar. 
 
 ### Quick links
 
-[Example application](https://zefoy.github.io/ngx-perfect-scrollbar/)
+[Example application](https://thegirishagarwal.github.io/ghx-chat-support/)
  |
-[StackBlitz example](https://stackblitz.com/github/zefoy/ngx-perfect-scrollbar/tree/master)
+[StackBlitz example](https://stackblitz.com/github/thegirishagarwal/ghx-chat-support/tree/master)
  |
-[Perfect Scrollbar documentation](https://github.com/utatti/perfect-scrollbar/)
+[Ghx Chat Support documentation](https://github.com/thegirishagarwal/ghx-chat-support/)
 
 ### Building the library
 
@@ -35,7 +32,7 @@ npm run start
 ### Installing and usage
 
 ```bash
-npm install ngx-perfect-scrollbar --save
+npm install ghx-chat-support --save
 ```
 
 ##### Load the module for your app (with global configuration):
@@ -43,125 +40,49 @@ npm install ngx-perfect-scrollbar --save
 Providing the global configuration is optional and when used you should only provide the configuration in your root module.
 
 ```javascript
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { GhxChatSupportModule } from 'ghx-chat-support';
 
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
 
 @NgModule({
   ...
   imports: [
     ...
-    PerfectScrollbarModule
+    GhxChatSupportModule
   ],
-  providers: [
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
-  ]
 })
 ```
 
 ##### Use it in your HTML template (with custom configuration):
 
-This library provides two ways to create a Perfect Scrollbar element, a component and a directive. Component tries to make the usage as simple as possible and the directive is meant for more custom / advanced use cases.
-
-The scroll area always needs some fixed height to work. The default styles uses 100% as the height value so the parent needs to have fixed height or you need to set it via CSS styles. Otherwise the height keeps growing and you won't get the scrollbars.
+This library provides two ways to create a Ghx Chat Support for your project, a component. Component tries to make the usage as simple as possible.
 
 **COMPONENT USAGE**
 
 Simply replace the element that would ordinarily be passed to `PerfectScrollbar` with the perfect-scollbar component.
 
 ```html
-<perfect-scrollbar style="max-width: 600px; max-height: 400px;" [config]="config">
-  <div>Scrollable content</div>
-</perfect-scrollbar>
+<ghx-chat-support
+    [chatBoxType]="'skype'"
+    [chatList]="chatBoxListData"
+>
+</ghx-chat-support>
 ```
 
 ```javascript
-[config]                // Custom config to override the global defaults.
-[disabled]              // Disables the Perfect Scrollbar initialization.
-
-[usePSClass]            // Use 'ps' class (needed by the ps theme styles).
-
-[autoPropagation]       // Automatic swipe and wheel propagation control.
-[scrollIndicators]      // Enable fading edges scroll indicators showing.
-
-(<psEventName>)         // All Perfect Scrollbar events work as bindings.
-                        // Event names are in camel case (not kebab case).
-                        // Example: ps-y-reach-start -> psYReachStart
+[chatBoxType]           // Whatever you want the type of chat box (Skype, Messenger, Telegram, Whatsapp) (Default: Skype).
+[chatList]              // List of active team member who available for interact with user
 ```
 
-**DIRECTIVE USAGE**
-
-When using only the directive you need to provide your own theming or import the default theme:
-
-```css
-@import '~perfect-scrollbar/css/perfect-scrollbar.css';
-```
-
-Perfect Scrollbar directive should be used with div elements and can take optional custom configuration:
-
-```html
-<div class="ps" style="position: relative; max-width: 600px; max-height: 400px;" [perfectScrollbar]="config">
-  <div>Scrollable content</div>
-</div>
-```
+##### Available configuration in chatList option:
 
 ```javascript
-[perfectScrollbar]      // Can be used to provide optional custom config.
-
-[disabled]              // Disables the Perfect Scrollbar initialization.
-
-(<psEventName>)         // All Perfect Scrollbar events work as bindings.
-                        // Event namea are in camel case (not kebab case).
-                        // Example: ps-y-reach-start -> psYReachStart
-```
-
-##### Available configuration options (custom / global configuration):
-
-```javascript
-handlers                // List of event handlers to scroll the element.
-wheelSpeed              // Scroll speed for the mousewheel event (Default: 1).
-swipeEasing             // Use easing for the swipe scrolling (Default: true).
-suppressScrollX         // Disable X axis in all situations (Default: false).
-suppressScrollY         // Disable Y axis in all situations (Default: false).
-wheelPropagation        // Propagate wheel events at the end (Default: false).
-useBothWheelAxes        // Always use both of the wheel axes (Default: false).
-minScrollbarLength      // Minimum size (px) for the scrollbar (Default: null).
-maxScrollbarLength      // Maximum size (px) for the scrollbar (Default: null).
-scrollXMarginOffset     // Offset before enabling the X scroller (Default: 0).
-scrollYMarginOffset     // Offset before enabling the Y scroller (Default: 0).
+userImg                 // Image of your team member who visible to user.
+userName                // Name of the team member.
+userDesignation         // Designation of team member
+contactName             // This is contact name of your team member.
+                        // Whatsapp: Your mobile number
+                        // Telegram/Messenger/Skype: Your userName
+userAvailability        // This is time of your team member avaibility. If you don't use this option that your team member will be always offline.
 ```
 
 For more detailed documentation with all the supported events / options see the the Perfect Scrollbar documentation.
-
-##### Available control / helper functions (provided by the directive):
-
-```javascript
-ps()                                        // Returns reference to the PS instance.
-
-update()                                    // Updates the scrollbar size and position.
-
-geometry(prefix)                            // Returns the geometry with specified prefix.
-position(absolute)                          // Returns the reach or absolute scroll position.
-
-scrollable(direction)                       // Checks if the given direction is scrollable.
-                                            // Direction can be: 'any', 'both', 'x', 'y'
-
-scrollTo(x, y, speed?)                      // Animate scroll to given x,y coordinates.
-scrollToY(position, speed?)                 // Animate scroll to given vertical position.
-scrollToX(position, speed?)                 // Animate scroll to given horizontal position.
-scrollToTop(offset?, speed?)                // Animate scroll to given offset from the top.
-scrollToLeft(offset?, speed?)               // Animate scroll to given offset from the left.
-scrollToRight(offset?, speed?)              // Animate scroll to given offset from the right.
-scrollToBottom(offset?, speed?)             // Animate scroll to given offset from the bottom.
-scrollToElement(element, offset?, speed?)   // Animate scroll to given or matching HTML element.
-                                            // Input can be HTMLElement or a query selector string.
-```
-
-Above functions can be accessed through the directive reference (available as directiveRef in the component). Position and offset needs to be given in pixels and speed in milliseconds.
