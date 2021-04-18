@@ -15,20 +15,6 @@ This documentation is for the latest 5/6.x.x version which requires Angular 5 or
  |
 [Ghx Chat Support documentation](https://github.com/thegirishagarwal/ghx-chat-support/)
 
-### Building the library
-
-```bash
-npm install
-npm run build
-```
-
-### Running the example
-
-```bash
-npm install
-npm run start
-```
-
 ### Installing and usage
 
 ```bash
