@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GhxChatSupportModule } from './chat-support/chat-support.module';
+
+import { GhxChatSupportModule } from 'ghx-chat-support';
 
 @NgModule({
   declarations: [
