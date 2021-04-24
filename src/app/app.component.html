@@ -1,21 +1,18 @@
-<nav>
+<nav class="navbar">
   <ul>
     <li>
-      <a href="javascript:;">Skype</a>
+      <a href="javascript:;" [routerLink]="'/skype'">Skype</a>
     </li>
     <li>
-      <a href="javascript:;">Whatsapp</a>
+      <a href="javascript:;" [routerLink]="'/whatsapp'">Whatsapp</a>
     </li>
     <li>
-      <a href="javascript:;">Telegram</a>
+      <a href="javascript:;" [routerLink]="'/telegram'">Telegram</a>
     </li>
     <li>
-      <a href="javascript:;">Messenger</a>
+      <a href="javascript:;" [routerLink]="'/messenger'">Messenger</a>
     </li>
   </ul>
 </nav>
 
-<ghx-chat-support
-  [chatBoxType]="'messenger'"
-  [chatList]="chatList"
-></ghx-chat-support>
+<router-outlet></router-outlet>
