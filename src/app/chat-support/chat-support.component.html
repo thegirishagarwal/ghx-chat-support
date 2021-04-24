@@ -1,0 +1,22 @@
+<div id="chatSupport">
+    <div class="chatIcon defaultIcon" [class.singleSupport]="chatQuantity === 'single'" #chatIcon [style.backgroundColor]="themeColor">
+        <!-- <i class="fab fa-{{ (iconName) ? iconName : 'comment' }}"></i> -->
+        <chat-icon [iconName]="iconName" [iconColor]="themeColor"></chat-icon>
+    </div>
+
+    <ng-container *ngIf="chatQuantity === 'single'">
+        <div class="chatBox" #chatBox [class.showChatBox]="isShowChatBox">
+            <ng-template chatBoxDD></ng-template>
+            <!-- <chat-box [chatList]="chatList" [chatBoxType]="chatBoxType" [chatHeading]="chatHeading" [chatTagline]="chatTagline" [themeColor]="themeColor" (closeChatBox)="closeChatBox()"></chat-box> -->
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="chatQuantity === 'multiple'">
+        <div class="chatIconMenu">
+            <ng-content select="chat-icon"></ng-content>
+        </div>
+        <div class="chatBoxMenu">
+            <ng-content select="chat-box"></ng-content>
+        </div>
+    </ng-container>
+</div>

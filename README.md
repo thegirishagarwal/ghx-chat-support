@@ -78,13 +78,13 @@ userAvailability        // This is time of your team member avaibility. If you d
     userDesignation: <Team member designation>,
     contactName: <Team member contact number>,
     userAvailability: {
-      sunday: '09:00:19:00',
-      monday: '09:00:19:00',
-      tuesday: '09:00:19:00',
-      wednesday: '09:00:19:00',
-      thursday: '09:00:19:00',
-      friday: '09:00:19:00',
-      saturday: '09:00:19:00',
+      sunday: '09:00-19:00',
+      monday: '09:00-19:00',
+      tuesday: '09:00-19:00',
+      wednesday: '09:00-19:00',
+      thursday: '09:00-19:00',
+      friday: '09:00-19:00',
+      saturday: '09:00-19:00',
     },
   }, ...
 ]
