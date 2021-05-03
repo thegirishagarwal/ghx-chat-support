@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 
-import { ChatBoxType, ChatBoxTypeArray, GhxChats } from './_common/interfaces';
+import { ChatBoxType, GhxChats } from './_common/interfaces';
 import { ChatBoxDirective } from './_common/directives/chat-box.directive';
 import { ChatBoxComponent } from './_components/chat-box/chat-box.component';
 import { CommonService } from './_common/services/common.service';
@@ -43,12 +43,14 @@ export class GhxChatSupportComponent implements OnInit, AfterViewInit {
   @ViewChild('chatBox', {static: false}) chatBox: ElementRef<HTMLDivElement>;
   public chatIcon$: any;
 
+  private previousType: string = null;
+
   @ViewChild(ChatBoxDirective, {static: false}) chatBoxD: ChatBoxDirective;
   componentRef: ComponentRef<any>;
 
   constructor(
     private cfr: ComponentFactoryResolver,
-    private _commonService: CommonService
+    private commonService: CommonService
   ) { }
 
   ngOnInit() {
@@ -60,10 +62,10 @@ export class GhxChatSupportComponent implements OnInit, AfterViewInit {
         this.chatIcons.push(
           {
             icon: type,
-            theme: this._commonService.setThemeColor(type)
+            theme: this.commonService.setThemeColor(type)
           }
-        )
-      })
+        );
+      });
     }
   }
 
@@ -79,11 +81,11 @@ export class GhxChatSupportComponent implements OnInit, AfterViewInit {
   setProperty() {}
 
   _setIconName() {
-    this.iconName = this._commonService.setIconName(this.chatBoxType);
+    this.iconName = this.commonService.setIconName(this.chatBoxType);
   }
 
   _setThemeName() {
-    this.themeColor = this._commonService.setThemeColor(this.chatBoxType);
+    this.themeColor = this.commonService.setThemeColor(this.chatBoxType);
   }
 
   private setChatBox() {
@@ -114,29 +116,44 @@ export class GhxChatSupportComponent implements OnInit, AfterViewInit {
 
   private _openChatIcon() {
     this.showChatIcons = !this.showChatIcons;
+    if (!this.showChatIcons) {
+      this.previousType = null;
+      this.componentRef.destroy();
+    }
   }
 
   _openChatBox() {
     this.showChatBox = !this.showChatBox;
     if ( this.showChatBox ) {
-      this.openChatBox();
+      this.openChatBox(this.chatBoxType, this.chatList);
     } else {
       this.closeChatBox();
     }
   }
 
-  openChatBox() {
+  openChatBoxIcon(type: ChatBoxType) {
+    if (this.previousType === type) {
+      this.componentRef.instance.closeChatBox.emit(true);
+      this.previousType = null;
+    } else {
+      this.previousType = type;
+      const chatList = this.chatList.filter(chats => chats.type === type);
+      this.openChatBox(type, chatList);
+    }
+  }
+
+  openChatBox(boxType?: ChatBoxType | Array<any>, chatList?: GhxChats[]) {
     const componentFactory = this.cfr.resolveComponentFactory(ChatBoxComponent);
 
     const viewContainerRef = this.chatBoxD.viewContainerRef;
     viewContainerRef.clear();
 
     this.componentRef = viewContainerRef.createComponent(componentFactory);
-    this.componentRef.instance.themeColor = this.themeColor;
+    this.componentRef.instance.themeColor = this.commonService.setThemeColor(boxType);
     this.componentRef.instance.chatHeading = this.chatHeading;
     this.componentRef.instance.chatTagline = this.chatTagline;
-    this.componentRef.instance.chatList = this.chatList;
-    this.componentRef.instance.chatBoxType = this.chatBoxType;
+    this.componentRef.instance.chatList = chatList;
+    this.componentRef.instance.chatBoxType = boxType;
 
 
     this.chatBox.nativeElement.classList.add('showChatBox');
@@ -148,9 +165,9 @@ export class GhxChatSupportComponent implements OnInit, AfterViewInit {
       if (isClose) {
         this.showChatBox = false;
         this.chatBox.nativeElement.classList.remove('showChatBox');
-        setTimeout(() => this.componentRef.destroy(), 500)
+        setTimeout(() => this.componentRef.destroy(), 500);
       }
-    })
+    });
   }
 
 }

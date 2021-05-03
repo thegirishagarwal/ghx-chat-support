@@ -1,13 +1,13 @@
+export type ChatBoxType = 'skype' | 'whatsapp' | 'messenger' | 'telegram';
+
 export interface GhxChats {
     userImg: string;
     userName: string;
     userDesignation: string;
     contactName: string | number;
     userAvailability?: UserAvailability;
+    type?: ChatBoxType;
 }
-
-export type ChatBoxType = 'skype' | 'whatsapp' | 'messenger' | 'telegram';
-export type ChatBoxTypeArray = ['skype' , 'whatsapp' , 'messenger' , 'telegram'];
 
 interface UserAvailability {
     monday?: string;

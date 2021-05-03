@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ChatBoxType, ChatBoxTypeArray } from '../interfaces';
+import { ChatBoxType } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'

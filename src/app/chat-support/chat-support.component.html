@@ -5,7 +5,7 @@
     </div>
 
     <ng-container *ngIf="chatQuantity === 'single'">
-        <div class="chatBox" #chatBox [class.showChatBox]="showChatIcons">
+        <div class="chatBox" #chatBox [class.showChatBox]="showChatBox">
             <ng-template chatBoxDD></ng-template>
             <!-- <chat-box [chatList]="chatList" [chatBoxType]="chatBoxType" [chatHeading]="chatHeading" [chatTagline]="chatTagline" [themeColor]="themeColor" (closeChatBox)="closeChatBox()"></chat-box> -->
         </div>
@@ -13,14 +13,17 @@
 
     <ng-container *ngIf="chatQuantity === 'multiple'">
         <div class="chatIconMenu" [class.showChatIcon]="showChatIcons">
-          <ng-container *ngFor="let icon of chatIcons">
-            <div (click)="">
-              <chat-icon [iconName]="icon.icon" [iconColor]="icon.theme"></chat-icon>
-            </div>
+          <ng-container *ngIf="showChatIcons">
+            <ng-container *ngFor="let icon of chatIcons">
+              <div (click)="openChatBoxIcon(icon.icon)">
+                <chat-icon [iconName]="icon.icon" [iconColor]="icon.theme"></chat-icon>
+              </div>
+            </ng-container>
           </ng-container>
         </div>
-        <div class="chatBoxMenu">
-            <ng-content select="chat-box"></ng-content>
+        <div class="chatBox" #chatBox [class.showChatBox]="showChatBox">
+          <ng-template chatBoxDD></ng-template>
+          <!-- <chat-box [chatList]="chatList" [chatBoxType]="chatBoxType" [chatHeading]="chatHeading" [chatTagline]="chatTagline" [themeColor]="themeColor" (closeChatBox)="closeChatBox()"></chat-box> -->
         </div>
     </ng-container>
 </div>
