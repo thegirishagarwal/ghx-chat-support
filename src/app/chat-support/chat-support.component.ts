@@ -137,7 +137,11 @@ export class GhxChatSupportComponent implements OnInit, AfterViewInit {
       this.previousType = null;
     } else {
       this.previousType = type;
-      const chatList = this.chatList.filter(chats => chats.type === type);
+      const chatList = this.chatList.filter(chats => {
+        if (chats.type !== undefined && chats.type !== null) {
+          return chats.type === type;
+        }
+      });
       this.openChatBox(type, chatList);
     }
   }

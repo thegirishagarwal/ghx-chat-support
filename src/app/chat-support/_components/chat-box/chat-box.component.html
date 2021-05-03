@@ -12,10 +12,15 @@
 
 <div class="chatBody">
     <div class="inner-chatBody">
-        <ng-container *ngIf="chatList">
+        <ng-container *ngIf="chatList.length > 0">
             <ng-container *ngFor="let chatData of chatList">
                 <chat-box-list [chatData]="chatData" [themeColor]="themeColor" (callChatSupport)="onChatSupport(chatBoxType, $event)"></chat-box-list>
             </ng-container>
+        </ng-container>
+        <ng-container *ngIf="chatList.length === 0">
+            <div class="no-chats-available">
+              <h4>No chat(s) available</h4>
+            </div>
         </ng-container>
     </div>
 </div>

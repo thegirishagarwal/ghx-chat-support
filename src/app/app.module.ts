@@ -9,6 +9,8 @@ import { TelegramComponent } from './telegram/telegram.component';
 import { MessengerComponent } from './messenger/messenger.component';
 import { WhatsappComponent } from './whatsapp/whatsapp.component';
 import { SkypeComponent } from './skype/skype.component';
+import { MultipleComponent } from './multiple/multiple.component';
+import { SingleComponent } from './single/single.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { SkypeComponent } from './skype/skype.component';
     TelegramComponent,
     MessengerComponent,
     WhatsappComponent,
-    SkypeComponent
+    SkypeComponent,
+    MultipleComponent,
+    SingleComponent
   ],
   imports: [
     BrowserModule,

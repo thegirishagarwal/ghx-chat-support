@@ -46,6 +46,17 @@
         background: #222222;
         opacity: .5;
     }
+
+    .no-chats-available {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 5px;
+        h4 {
+          color: #aaa;
+          font-weight: normal
+        }
+    }
 }
 
 .closePopup{
